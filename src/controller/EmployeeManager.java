@@ -12,7 +12,6 @@ public class EmployeeManager {
     public static EmployeeFromFile employeeData = new EmployeeFromFile();
     public static ArrayList<Employee> employee = employeeData.readFile();
 
-
     public static void showMenu() {
         System.out.println("Menu: ");
         System.out.println("1. Hiển thị thông tin của toàn bộ nhân viên");
@@ -47,39 +46,44 @@ public class EmployeeManager {
                 return getEmployee;
         return null;
     }
-    public static void setBasicInfo(){
-        checkValidate check = new checkValidate();
-
-    }
 
     public static void setBasicInfo(Employee employee) {
-        Scanner sc = new Scanner(System.in);
+        checkValidate valid = new checkValidate();
         System.out.println("Nhập ID của nhân viên: ");
-        employee.setId(Integer.parseInt(sc.nextLine()));
+        int id = valid.checkInt();
+        employee.setId(id);
         System.out.println("Nhập tên của nhân viên: ");
-        employee.setName(sc.nextLine());
+        String name = valid.checkString();
+        employee.setName(name);
         System.out.println("Nhập tuổi của nhân viên: ");
-        employee.setAge(Integer.parseInt(sc.nextLine()));
+        int age = valid.checkAge();
+        employee.setAge(age);
         System.out.println("Nhập địa chỉ thư điện tử của nhân viên: ");
-        employee.setMail(sc.nextLine());
+        String mail = valid.checkString();
+        employee.setMail(mail);
         System.out.println("Nhập số điện thoại của nhân viên: ");
-        employee.setPhone(sc.nextLine());
+        String phone = valid.checkString();
+        employee.setPhone(phone);
     }
 
     public static void setFullTimeInfo(FullTimeEmployee employee) {
-        Scanner sc = new Scanner(System.in);
+        checkValidate valid = new checkValidate();
         System.out.println("Nhập lương cứng của nhân viên: ");
-        employee.setBasicSalary(Integer.parseInt(sc.nextLine()));
+        double salary = valid.checkDouble();
+        employee.setBasicSalary(salary);
         System.out.println("Nhập tiền thưởng của nhân viên: ");
-        employee.setBonus(Integer.parseInt(sc.nextLine()));
+        double bonus = valid.checkDouble();
+        employee.setBasicSalary(bonus);
         System.out.println("Nhập tiền phạt của nhân viên: ");
-        employee.setPenalty(Integer.parseInt(sc.nextLine()));
+        double penalty = valid.checkDouble();
+        employee.setBasicSalary(penalty);
     }
 
     public static void setPartTimeInfo(PartTimeEmployee employee) {
-        Scanner sc = new Scanner(System.in);
+        checkValidate valid = new checkValidate();
         System.out.println("Nhập số giờ làm việc của nhân viên: ");
-        employee.setHour(Integer.parseInt(sc.nextLine()));
+        double hour = valid.checkDouble();
+        employee.setHour(hour);
     }
 
     public static Employee createNewEmployee() {
